@@ -6,7 +6,7 @@
     enroll_on : 入会月
     next_exam_on : 次回審査目標月
     privacy_policy_agreed : 情報同意確認
-    role : enum（管理者、会員）
+    role : enum（0: 会員, 1: 管理者）
 		created_at :  作成日
 		updated_at :  更新日
 
@@ -16,7 +16,7 @@
     description : 段位説明
 
 　* wazas  段位別の技セット（set_typeで一人／組み／体技を区別する。）
-		set_type : enum（一人技、組み技、体技）
+		shinsa_set : enum（一人技、組み技、体技）
     koumoku  : 審査項目（5級 一人技など）
   	content : 技の説明（技名＋説明）
 		order_in_rank : 同一段位内での技セットの並び順（一人技、体技がない段位がある場合など）
