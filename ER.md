@@ -1,29 +1,29 @@
 ### ER図
  添付参照ください。
-- [ ] テーブルの目的とカラムの役割
-　* members  会員情報（rank_idで段位を参照する。管理者によるCRUD操作）
-		rank_id : 段位
-    enroll_on : 入会月
-    next_exam_on : 次回審査目標月
-    privacy_policy_agreed : 情報同意確認
-    role : enum（0: 会員, 1: 管理者）
-		created_at :  作成日
-		updated_at :  更新日
+## テーブルの目的とカラムの役割
+*  members  会員情報（rank_idで段位を参照する。管理者によるCRUD操作）
+rank_id : 段位
+enroll_on : 入会月
+next_exam_on : 次回審査目標月
+privacy_policy_agreed : 情報同意確認
+role : enum（0: 会員, 1: 管理者）
+created_at :  作成日
+updated_at :  更新日
 
-　* ranks  段位マスタ（5級〜4段まで）
-		name : 段位名（5級、初段他）
-    display_order : 段位の並び順を数値で制御
-    description : 段位説明
+* ranks  段位マスタ（5級〜4段まで）
+name : 段位名（5級、初段他）
+display_order : 段位の並び順を数値で制御
+description : 段位説明
 
-　* wazas  段位別の技セット（set_typeで一人／組み／体技を区別する。）
-		shinsa_set : enum（一人技、組み技、体技）
-    koumoku  : 審査項目（5級 一人技など）
-  	content : 技の説明（技名＋説明）
-		order_in_rank : 同一段位内での技セットの並び順（一人技、体技がない段位がある場合など）
+* wazas  段位別の技セット（set_typeで一人／組み／体技を区別する。）
+shinsa_set : enum（0:一人技, 1:組み技, 2:体技）
+koumoku  : 審査項目（5級 一人技など）
+content : 技の説明（技名＋説明）
+order_in_rank : 同一段位内での技セットの並び順（一人技、体技がない段位がある場合など）
 
-　* videos  技動画 (1対1でURL埋め込み)
-		platform : YouTube、Vimeoなど
-    description :ビデオの説明
+* videos  技動画 (1対1でURL埋め込み)
+platform : YouTube、Vimeoなど
+description :ビデオの説明
 
 ### 本サービスの概要（700文字以内）
 本サービスは、心身統一合氣道一宮教室の運営効率と情報提供を最小コストで実現する管理アプリのMVPです。管理者はWeb管理画面から会員プロフィールを登録・検索・更新でき、会員ごとの段位を一元管理します。段位ごとに 「一人技セット」「組み技セット」「体技セット」の３種の技セット（１対１の動画付き）を登録し、技の組み合わせ全文と対応動画URLを紐付けて提供できます。データモデルは members・ranks・wazas・videos で構成します。Rails3.4＋ PostgreSQLを想定し、管理者認証はDevise、検索はRansackで実装。これにより紙台帳やバラバラな動画管理を脱却し、段位基準と技コンテンツを正確かつ迅速に会員へ提示できる基盤を構築します。
