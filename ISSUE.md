@@ -12,7 +12,7 @@ Rails3.4＋ PostgreSQLを想定し、管理者認証はDevise、検索はRansack
 
 ■ProjectsのURL
 https://github.com/users/AI-ONE-PEACE/projects/1
-
+1週間ごとの看板立て
 
 ■MVPリリースまで【合計SP: 36 = 72時間】
 
